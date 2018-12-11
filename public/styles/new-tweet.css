@@ -19,3 +19,7 @@ section.new-tweet textarea {
 span.counter {
   float: right;
 }
+
+.negative {
+  color: red;
+}
