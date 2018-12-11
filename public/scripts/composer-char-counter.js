@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("section.new-tweet form textarea").keyup(function() {
+  $("section.new-tweet form textarea").on('keyup', function() {
     // calculate characters counter
     var charLength = $(this).val().length;
     var counter = 140 - charLength;
