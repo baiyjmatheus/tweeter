@@ -9,16 +9,16 @@ function createTweetElement(tweetObj) {
   var header = `
     <header>
       <div class="user-info">
-        <img class="tweet-profile" src="${tweetObj.user.avatars.small}">
-        <h2>${tweetObj.user.name}</h2>
+        <img class="tweet-profile" src="${escape(tweetObj.user.avatars.small)}">
+        <h2>${escape(tweetObj.user.name)}</h2>
       </div>
-      <span>${tweetObj.user.handle}</span>
+      <span>${escape(tweetObj.user.handle)}</span>
     </header>
   `;
 
   var tweetBody = `
     <div class="tweet-body">
-      <p>${tweetObj.content.text}</p>
+      <p>${escape(tweetObj.content.text)}</p>
     </div>
   `;
 
@@ -78,6 +78,12 @@ function loadTweets(isNewTweet) {
   });
 }
 
+// XSS escape
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 
 $(document).ready(function() {
   loadTweets();
