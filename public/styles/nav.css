@@ -33,7 +33,16 @@ div#nav-items {
 }
 
 div#nav-items .btn-compose {
+  color: #00a087;
+  opacity: 0.8;
   margin: 10px 0;
-  width: 100px;
+  width: 120px;
   height: 60px;
+  border-radius: 10px;
+  border: 2px solid #244751;
+}
+
+div#nav-items .btn-compose:hover {
+  color: #244751;
+  opacity: 1;
 }
