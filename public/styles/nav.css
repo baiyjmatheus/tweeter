@@ -1,4 +1,6 @@
 #nav-bar {
+  display: flex;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   height: 80px;
@@ -9,15 +11,29 @@
   z-index: 1;
 }
 
+/* Nav-header */
 #nav-bar .logo {
   height: 80px;
   width: 80px;
   float: left;
 }
 
-#nav-bar .header {
+#nav-bar .heading {
   margin-left: 10px;
   font-size: 2em;
   float: left;
   line-height: 80px;
+}
+
+/* nav-items */
+
+div#nav-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+div#nav-items .btn-compose {
+  margin: 10px 0;
+  width: 100px;
+  height: 60px;
 }

@@ -88,7 +88,12 @@ function escape(str) {
 $(document).ready(function() {
   loadTweets();
 
-  // Post tweet AJAX
+  // show or hide new-tweet form - on click listener
+  $("button.btn-compose").on("click", function() {
+    $("section.new-tweet").slideToggle();
+  });
+
+  // Post tweet AJAX - form submit listener
   $("section.new-tweet form").on("submit", function(e) {
     e.preventDefault();
     var charLength = $("section.new-tweet textarea").val().length;
