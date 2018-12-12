@@ -63,6 +63,7 @@ function postTweet(form) {
     loadTweets(true);
   });
   $("section.new-tweet textarea").val("");
+  $("section.new-tweet span.counter").text("140");
 }
 
 // Load tweets from database and render to tweet container
