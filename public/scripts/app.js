@@ -90,8 +90,13 @@ $(document).ready(function() {
 
   // show or hide new-tweet form - on click listener
   $("button.btn-compose").on("click", function() {
+    var errorContainer = $("div#error-container");
     $("section.new-tweet").slideToggle();
     $("section.new-tweet textarea").focus();
+    // Close error container if its open
+    if (errorContainer.css("display") !== "none") {
+      errorContainer.slideUp();
+    }
   });
 
   // Post tweet AJAX - form submit listener
