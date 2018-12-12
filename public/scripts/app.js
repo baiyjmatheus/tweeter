@@ -53,6 +53,7 @@ const data = [
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+//  Returns the DOM structure of a tweet
 function createTweetElement(tweetObj) {
   var header = `
     <header>
@@ -95,6 +96,7 @@ function createTweetElement(tweetObj) {
   return $tweet;
 }
 
+// Renders all elements of a tweets array
 function renderTweets(tweetsArr) {
   var $tweetContainer = $("#tweet-container");
   tweetsArr.forEach(function(tweet) {
