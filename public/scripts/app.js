@@ -105,6 +105,20 @@ function renderTweets(tweetsArr) {
   })
 }
 
+// Async POST request for new tweet
+function postTweet(form) {
+  $.post("/tweets", $(form).serialize());
+}
+
 $(document).ready(function() {
   renderTweets(data);
+
+  // Post tweet AJAX
+  $("section.new-tweet form").on("submit", function(e) {
+    e.preventDefault();
+    // $.post("/tweets", $(this).serialize());
+    postTweet(this);
+  });
+
+
 });
