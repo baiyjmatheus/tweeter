@@ -97,12 +97,17 @@ $(document).ready(function() {
   // Post tweet AJAX - form submit listener
   $("section.new-tweet form").on("submit", function(e) {
     e.preventDefault();
+    var errorContainer = $("div#error-container");
+    var errorMessage = $("p.error-message");
     var charLength = $("section.new-tweet textarea").val().length;
     if (!charLength) {
-      alert("Don't forget to type your tweet");
+      errorContainer.slideDown();
+      errorMessage.text("Don't forget to type your tweet");
     } else if (charLength > 140) {
-      alert("Oops! Your tweet is too long (max: 140 characters)");
+      errorContainer.slideDown();
+      errorMessage.text("Oops! Your tweet is too long (max: 140 characters)");
     } else {
+      errorContainer.slideUp();
       postTweet(this);
     }
   });

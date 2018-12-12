@@ -24,3 +24,13 @@ span.counter {
 .negative {
   color: red;
 }
+
+/* Error-message */
+div#error-container {
+  display: none;
+  margin: 0 2em 30px;
+  background: #ef9a9a;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
