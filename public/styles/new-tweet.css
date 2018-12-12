@@ -28,6 +28,7 @@ span.counter {
 /* Error-message */
 div#error-container {
   display: none;
+  color: #244751;
   margin: 0 2em 30px;
   background: #ff8a80;
   padding: 10px;
