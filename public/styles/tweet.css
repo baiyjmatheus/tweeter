@@ -46,6 +46,10 @@ div.tweet-body {
   margin: 30px 10px;
 }
 
+div.tweet-body p {
+  word-break: break-word;
+}
+
 /* Tweet Footer */
 .tweet footer {
   display: flex;
