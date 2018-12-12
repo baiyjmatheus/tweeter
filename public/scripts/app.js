@@ -91,6 +91,7 @@ $(document).ready(function() {
   // show or hide new-tweet form - on click listener
   $("button.btn-compose").on("click", function() {
     $("section.new-tweet").slideToggle();
+    $("section.new-tweet textarea").focus();
   });
 
   // Post tweet AJAX - form submit listener
