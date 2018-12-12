@@ -1,5 +1,4 @@
 // Fake data taken from initial-tweets.json
-// Fake data taken from tweets.json
 const data = [
   {
     "user": {
