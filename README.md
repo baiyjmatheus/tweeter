@@ -4,9 +4,8 @@ A simple single-page AJAX-based Twitter clone that uses jQuery, HTML5 and plain 
 
 ## Final Product
 
-!["Tweets"](https://github.com/baiyjmatheus/tweeter/blob/master/docs/tweets.png)
-!["Compose"](https://github.com/baiyjmatheus/tiny-app/blob/master/docs/compose.png)
-!["Error"](https://github.com/baiyjmatheus/tiny-app/blob/master/docs/error.png)
+!["Compose"](https://github.com/baiyjmatheus/tweeter/blob/master/docs/compose.png)
+!["Error"](https://github.com/baiyjmatheus/tweeter/blob/master/docs/error.png)
 
 ## Dependencies
   - Node.js
