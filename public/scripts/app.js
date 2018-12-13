@@ -66,7 +66,7 @@ function postTweet(form) {
   $("section.new-tweet span.counter").text("140");
 }
 
-// Load tweets from database and render to tweet container
+// Load tweet(s) from database and render to tweet container
 // newTweet = Boolean
 function loadTweets(isNewTweet) {
   $.get("/tweets", function(tweets) {
@@ -87,6 +87,7 @@ function escape(str) {
 }
 
 $(document).ready(function() {
+  // Initial tweets in feed
   loadTweets();
 
   // show or hide new-tweet form - on click listener
@@ -107,10 +108,12 @@ $(document).ready(function() {
 
   // Post tweet AJAX - form submit listener
   $("section.new-tweet form").on("submit", function(e) {
+    // Prevent form default action
     e.preventDefault();
     var errorContainer = $("div#error-container");
     var errorMessage = $("p.error-message");
     var charLength = $("section.new-tweet textarea").val().length;
+    // Checks for tweet content validation and displays if there's an error
     if (!charLength) {
       errorContainer.slideDown();
       errorMessage.text("Don't forget to type your tweet");
