@@ -22,12 +22,23 @@ function createTweetElement(tweetObj) {
     </div>
   `;
 
-  var daysAgo = Date.now() - tweetObj.created_at;
-  daysAgo = Math.round(daysAgo / (1000*60*60*24));
+  // Time calculation
+  var difference = Math.floor(Date.now() - tweetObj.created_at);
+  var timeMsg = 0;
+  // var time = Math.floor(Date.now() - tweetObj.created_at);
+  if ((difference / 1000) < 60) {
+    timeMsg = Math.round(difference/1000) + " seconds ago";
+  } else if (difference / (1000*60) < 60) {
+    timeMsg = Math.round(difference / (1000*60)) + " minutes ago";
+  } else if (difference / (1000*60*60) < 24) {
+    timeMsg = Math.round(difference / (1000*60*60)) +" hours ago";
+  } else {
+    timeMsg = Math.round(difference / (1000*60*60*24)) + " days ago";
+  }
 
   var footer = `
     <footer>
-      <p><span>${daysAgo}</span> days ago</p>
+      <p>${timeMsg}</p>
       <ul class="icons">
         <li><i class="fas fa-flag"></i></li>
         <li><i class="fas fa-retweet"></i></li>
