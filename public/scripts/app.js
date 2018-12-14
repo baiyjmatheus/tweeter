@@ -42,7 +42,7 @@ function createTweetElement(tweetObj) {
       <ul class="icons">
         <li><i class="fas fa-flag"></i></li>
         <li><i class="fas fa-retweet"></i></li>
-        <li><i class="fas fa-heart"></i></li>
+        <li><i id="like" class="fas fa-heart"></i></li>
       </ul>
     </footer>
   `;
@@ -63,6 +63,7 @@ function renderTweets(tweetsArr) {
   var $tweetContainer = $("#tweet-container");
   tweetsArr.forEach(function(tweet) {
     var $tweetElem = createTweetElement(tweet);
+    $tweetElem.data("data-id", tweet._id);
     $tweetContainer.prepend($tweetElem);
   })
 }
@@ -88,6 +89,10 @@ function loadTweets(isNewTweet) {
       renderTweets(tweets);
     }
   });
+}
+
+function likeTweet() {
+
 }
 
 // XSS escape
@@ -136,5 +141,24 @@ $(document).ready(function() {
       postTweet(this);
     }
     $("section.new-tweet textarea").focus();
+  });
+
+  // Like tweet event listener
+  $("section#tweet-container").on("click",  "article.tweet i#like", function(e) {
+    var $likeBtn = $(this);
+    var $tweet = $likeBtn.closest("article.tweet");
+    var tweetId = $tweet.data("data-id");
+    console.log(tweetId);
+
+    // Change btn color
+    $likeBtn.toggleClass("liked");
+
+    // AJAX PUT request to /tweets/:id/like
+    $.ajax({
+      url: `/tweets/${tweetId}/like`,
+      type: "PUT"
+    });
+
+
   });
 });

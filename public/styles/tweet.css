@@ -73,3 +73,7 @@ div.tweet-body p {
   margin: 0 10px;
   color: #00a087;
 }
+
+.liked {
+  color: tomato;
+}
