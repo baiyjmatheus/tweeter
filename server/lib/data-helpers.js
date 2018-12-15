@@ -41,6 +41,19 @@ module.exports = function makeDataHelpers(db) {
           callback();
           console.log(result);
       });
+    },
+
+    unlikeTweet: function(tweetId, callback) {
+      db.collection("tweets")
+        .updateOne(
+          { "_id": ObjectId(tweetId) }, 
+          { $set: { "liked": false }},
+          (err, result) => {
+          if (err) {
+            return callback(err);
+          }
+          callback();
+      });
     }
 
   };

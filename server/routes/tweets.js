@@ -53,6 +53,18 @@ module.exports = function(DataHelpers) {
     });
   });
 
+  // Like tweets route
+  tweetsRoutes.put("/:id/unlike", (req, res) => {
+    const { id } = req.params;
+    DataHelpers.unlikeTweet(id, (err) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(201).send();
+      }
+    });
+  });
+
   return tweetsRoutes;
 
 }

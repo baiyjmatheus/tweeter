@@ -36,13 +36,18 @@ function createTweetElement(tweetObj) {
     timeMsg = Math.round(difference / (1000*60*60*24)) + " days ago";
   }
 
+  var likedClass = "";
+  if (tweetObj.liked) {
+    likedClass = "liked"
+  }
+
   var footer = `
     <footer>
       <p>${timeMsg}</p>
       <ul class="icons">
         <li><i class="fas fa-flag"></i></li>
         <li><i class="fas fa-retweet"></i></li>
-        <li><i id="like" class="fas fa-heart"></i></li>
+        <li><i id="like" class="${likedClass} fas fa-heart"></i></li>
       </ul>
     </footer>
   `;
@@ -91,9 +96,19 @@ function loadTweets(isNewTweet) {
   });
 }
 
-// function likeTweet() {
+function likeTweet(tweetId) {
+  $.ajax({
+    url: `/tweets/${tweetId}/like`,
+    type: "PUT"
+  });
+}
 
-// }
+function unlikeTweet(tweetId) {
+  $.ajax({
+    url: `/tweets/${tweetId}/unlike`,
+    type: "PUT"
+  });
+}
 
 // XSS escape
 function escape(str) {
@@ -148,17 +163,14 @@ $(document).ready(function() {
     var $likeBtn = $(this);
     var $tweet = $likeBtn.closest("article.tweet");
     var tweetId = $tweet.data("data-id");
-    console.log(tweetId);
-
+    if ($likeBtn.hasClass("liked")) {
+      // AJAX PUT request to /tweets/:id/unlike
+      unlikeTweet(tweetId);
+    } else {
+      // AJAX PUT request to /tweets/:id/like
+      likeTweet(tweetId);
+    }
     // Change btn color
     $likeBtn.toggleClass("liked");
-
-    // AJAX PUT request to /tweets/:id/like
-    $.ajax({
-      url: `/tweets/${tweetId}/like`,
-      type: "PUT"
-    });
-
-
   });
 });
