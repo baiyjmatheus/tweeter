@@ -91,9 +91,9 @@ function loadTweets(isNewTweet) {
   });
 }
 
-function likeTweet() {
+// function likeTweet() {
 
-}
+// }
 
 // XSS escape
 function escape(str) {
